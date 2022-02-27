@@ -1,0 +1,156 @@
+<!DOCTYPE html><html lang="en"><head>
+
+    <link rel="stylesheet" href="main.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&amp;display=swap" rel="stylesheet">
+    <script src="p5.js"></script>
+    <script src="p5.sound.min.js"></script>
+    <script src="https://freshfork.github.io/p5.EasyCam/p5.easycam.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="icon" href="PNG/icona.png">
+    <title>Spotify Dataset</title>
+
+
+    <meta charset="utf-8">
+
+
+  </head>
+  <body>
+   
+<div>   
+
+  <div id="glossary">
+    <div id="text" > <a style="font-size:12pt">In the dropdown list, the top 200 most popular songs of 2020 and 2021 are listed. 
+    Choose a song and push the botton to select it. Find a yellow sphere in the graph which represents the selected song. 
+    Examine its fundamental characteristics and push the play botton to listen the song.</a>
+  <br>
+  <br>
+    <a style="font-weight:500;font-size:12pt">Song characteristics:</a>
+    
+    <li style="padding-left: 40px"> <a style="font-weight:500;font-size:12pt">Danceability:</a> It describes how suitable a track is for dancing based on a combination 
+      of musical elements including tempo, rhythm stability, beat strength, and overall regularity. <br>A value of 0.0 is least 
+      danceable and 1.0 is most danceable.</li>
+      
+      <li style="padding-left: 40px"><a style="font-weight:500;font-size:12pt">Valence:</a> A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. 
+      Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative 
+      (e.g. sad, depressed, angry).</li>
+
+      <li style="padding-left: 40px"><a style="font-weight:500;font-size:12pt">Acousticness:</a> A measure from 0.0 to 1.0 of whether the track is acoustic.</li>
+
+      <li style="padding-left: 40px"><a style="font-weight:500;font-size:12pt">Energy:</a> Is a measure from 0.0 to 1.0 and represents 
+        a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy.</li>
+
+        <br>
+
+        <a style="font-weight:500;font-size:12pt">Sphere characteristics:</a>
+    
+    <li style="padding-left: 40px"> <a style="font-weight:500;font-size:12pt">Colour:</a> Based on energy, it goes from purple fading to green, 
+      starting from 0.0 to 1.0.</li>
+      
+      <li style="padding-left: 40px"><a style="font-weight:500;font-size:12pt">Dimension:</a> Based on streams, that is how many times the song has been listen, 
+        using normalized values.</li>
+
+      <li style="padding-left: 40px"><a style="font-weight:500;font-size:12pt">Position:</a> Based on valence, acousticness and danceability values 
+        as x-axis, it goes from (0.0 , 0.0, 0.0 ) to (1.0 , 1.0 , 1.0).</li>
+
+  </div>
+  </div>
+
+    <div id="title" class="title">What makes it popular?</div>
+    <div id="subtitle" class="subtitle">Choose a song, locate it on the graph, examine and listen to its fundamental characteristics.</div>
+    
+    <div id="right_container">
+
+        <div id="sound_box"></div>
+        
+
+        <button id="b1" class="botton1"onclick="crea_tendina();">
+            Load Songs
+        </button>
+
+        <button id="b2" class="botton2" onclick="validate();">
+            Select the Song
+        </button>
+
+        
+        
+        <select id="tendi" class="tendina" name='tendina' size="7"></select>
+        
+    </div>
+ 
+
+    <div id="sketch_container"></div>
+    <button id="info" class="class_info" onmouseover="display_glossary()" onmouseout="close_glossary()">Glossary</button>    
+  </div>  
+
+  <script src="sketch.js"></script>
+
+  <script>
+
+    var seleziona = document.getElementById("arr");
+    var selectedValue;
+    var IndexSelected;
+    var ddl = document.getElementById("tendi");
+
+    function validate()
+    {
+
+    
+    selectedValue = ddl.options[ddl.selectedIndex].value;
+    IndexSelected = ddl.options[ddl.selectedIndex].index;
+    if (selectedValue != " ")
+    {
+    print("Hai selezionato: " + selectedValue + " Valore indice : " + IndexSelected);
+
+    }
+    
+    }
+
+    function crea_tendina()
+    {
+
+        document.getElementById("tendi").style.display='block';
+
+        var prova = [reci[0],reci[1],reci[2],reci[3],reci[4],reci[5],reci[6],reci[7],reci[8],reci[9],
+            reci[10],reci[11],reci[12],reci[13],reci[14],reci[15],reci[16],reci[17],reci[18],reci[19],
+            reci[20],reci[21],reci[22],reci[23],reci[24],reci[25],reci[26],reci[27],reci[28],reci[29],
+            reci[30],reci[31],reci[32],reci[33],reci[34],reci[35],reci[36],reci[37],reci[38],reci[39],
+            reci[40],reci[41],reci[42],reci[43],reci[44],reci[45],reci[46],reci[47],reci[48],reci[49],
+            reci[50],reci[51],reci[52],reci[53],reci[54],reci[55],reci[56],reci[57],reci[58],reci[59],
+            reci[60],reci[61],reci[62],reci[63],reci[64],reci[65],reci[66],reci[67],reci[68],reci[69],
+            reci[70],reci[71],reci[72],reci[73],reci[74],reci[75],reci[76],reci[77],reci[78],reci[79],
+            reci[80],reci[81],reci[82],reci[83],reci[84],reci[85],reci[86],reci[87],reci[88],reci[89],
+            reci[90],reci[91],reci[92],reci[93],reci[94],reci[95],reci[96],reci[97],reci[98],reci[99],
+            reci[100],reci[101],reci[102],reci[103],reci[104],reci[105],reci[106],reci[107],reci[108],reci[109],
+            reci[110],reci[111],reci[112],reci[113],reci[114],reci[115],reci[116],reci[117],reci[118],reci[119],
+            reci[120],reci[121],reci[122],reci[123],reci[124],reci[125],reci[126],reci[127],reci[128],reci[129],
+            reci[130],reci[131],reci[132],reci[133],reci[134],reci[135],reci[136],reci[137],reci[138],reci[139],
+            reci[140],reci[141],reci[142],reci[143],reci[144],reci[145],reci[146],reci[147],reci[148],reci[149],
+            reci[150],reci[151],reci[152],reci[153],reci[154],reci[155],reci[156],reci[157],reci[158],reci[159],
+            reci[160],reci[161],reci[162],reci[163],reci[164],reci[165],reci[166],reci[167],reci[168],reci[169],
+            reci[170],reci[171],reci[172],reci[173],reci[174],reci[175],reci[176],reci[177],reci[178],reci[179],
+            reci[180],reci[181],reci[182],reci[183],reci[184],reci[185],reci[186],reci[187],reci[188],reci[189],
+            reci[190],reci[191],reci[192],reci[193],reci[194],reci[195],reci[196],reci[197],reci[198],reci[199]
+        ];
+
+        $.each(prova, function (i, p) {
+            $('#tendi').append($('<option></option>')
+                .val(p).html(p));
+        });
+
+        document.getElementById("b1").style.display='none';
+        document.getElementById("b2").style.display='block';
+    }
+
+    function display_glossary() {
+        document.getElementById("glossary").style.display='block';
+        }
+
+        function close_glossary() {
+        document.getElementById("glossary").style.display='none';
+        }
+
+   
+
+
+  </script>
+</body></html>
